@@ -43,6 +43,14 @@ class App extends React.Component {
     this.setState({message:'Winner Picked.'})
   }
   
+  onAmountChanged = (value) => { 
+    const re = /^[0-9\b]+$/;
+
+    if (value === '' || re.test(value)) {
+       this.setState({value})
+    } 
+  }
+
   render() {
     return (
       <div>
@@ -58,7 +66,7 @@ class App extends React.Component {
            <div>
              <label> Amount of Ether To Enter </label>
              <input 
-               onChange = {e=>this.setState({value:e.target.value})}
+               onChange = {e=>this.onAmountChanged(e.target.value)}
                value = {this.state.value}
              /> 
            </div>
